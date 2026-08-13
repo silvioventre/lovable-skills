@@ -56,7 +56,7 @@ Run comprehensive checks across 5 dimensions. Score each dimension 0-4 using the
 
 ### 5. Implementation Integrity (CRITICAL)
 
-Run the bundled detector and verify each finding in context. Look for repeated implementation shortcuts, design-system drift, misleading or decorative content, and structure that is interchangeable with an unrelated product. Keep deterministic findings separate from visual judgment and call out false positives.
+Read the target's source against the anti-pattern families in [craft-floor.md](craft-floor.md) and verify each finding in context. Look for repeated implementation shortcuts, design-system drift, misleading or decorative content, and structure that is interchangeable with an unrelated product. Keep deterministic findings separate from visual judgment and call out false positives.
 
 **Score 0-4**: 0=systemic drift, 1=major repeated failures, 2=several verified issues, 3=minor isolated issues, 4=coherent and intentional
 
@@ -76,7 +76,7 @@ Run the bundled detector and verify each finding in context. Look for repeated i
 **Rating bands**: 18-20 Excellent (minor polish), 14-17 Good (address weak dimensions), 10-13 Acceptable (significant work needed), 6-9 Poor (major overhaul), 0-5 Critical (fundamental issues)
 
 ### Implementation Integrity Verdict
-**Start here.** Pass/fail: does the implementation express a coherent product-specific system? Cite verified evidence and detector findings.
+**Start here.** Pass/fail: does the implementation express a coherent product-specific system? Cite verified evidence and scan findings.
 
 ### Executive Summary
 - Audit Health Score: **??/20** ([rating band])

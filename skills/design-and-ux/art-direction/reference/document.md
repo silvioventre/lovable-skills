@@ -4,7 +4,7 @@ DESIGN.md follows the [official DESIGN.md format spec](https://raw.githubusercon
 
 ## The frontmatter: token schema
 
-The YAML frontmatter is the machine-readable layer. It's what Stitch's linter validates and what the live panel renders tiles from. Keep it tight; every entry should correspond to a token the project actually uses.
+The YAML frontmatter is the machine-readable layer. It's what Stitch's linter validates and what any downstream tool reads tokens from. Keep it tight; every entry should correspond to a token the project actually uses.
 
 ```yaml
 ---
@@ -68,7 +68,7 @@ Omit irrelevant sections rather than filling them with invented rules. Put respo
 - An existing `DESIGN.md` is stale (the design has drifted).
 - Before a large redesign, to capture the current state as a reference.
 
-If a `DESIGN.md` already exists, **do not silently overwrite it**. Show the user the existing file and STOP and use Codex's structured user-input/question tool when available; if unavailable, ask directly in chat to clarify what you cannot infer. whether to refresh, overwrite, or merge.
+If a `DESIGN.md` already exists, **do not silently overwrite it**. Show the user the existing file and ask whether to refresh, overwrite, or merge.
 
 ## Two paths
 
@@ -104,7 +104,7 @@ Build a structured draft from the discovered tokens. For each token class:
 
 ### Step 2b: Stage the frontmatter
 
-From the auto-extracted tokens, draft the YAML frontmatter now (you'll write it at the top of DESIGN.md in Step 4). This is the machine-readable layer: what the live panel and Stitch's linter consume.
+From the auto-extracted tokens, draft the YAML frontmatter now (you'll write it at the top of DESIGN.md in Step 4). This is the machine-readable layer: what Stitch's linter and downstream tooling consume.
 
 - **Colors**: one entry per extracted color. Key = descriptive slug (`oxblood-deep`, `editorial-magenta`, not `blue-800`). Value = whichever format the project treats as canonical (OKLCH or hex; see the frontmatter rules above). Don't split the source of truth: one format in the frontmatter, don't redefine the same token in prose with a different value.
 - **Typography**: one entry per role (`display`, `headline`, `title`, `body`, `label`). Typography is an object; include only the props that are real for the project (`fontFamily`, `fontSize`, `fontWeight`, `lineHeight`, `letterSpacing`, `fontFeature`, `fontVariation`).
@@ -115,7 +115,7 @@ Skip anything the project doesn't have. Empty scale keys or fabricated tokens po
 
 ### Step 3: Ask the user for qualitative language
 
-The following require creative input that cannot be auto-extracted. Ask them in two structured rounds of no more than three questions each (or the harness's lower limit), waiting between rounds:
+The following require creative input that cannot be auto-extracted. Ask them in two rounds of no more than three questions each, waiting for answers between rounds:
 
 - **Creative North Star**: a single named metaphor for the whole system ("The Editorial Sanctuary", "The Golden State Curator", "The Lab Notebook"). Offer 2-3 options that honor PRODUCT.md's brand personality.
 - **Overview voice**: mood adjectives, aesthetic philosophy in 2-3 sentences, and any confirmed visual anti-reference.
@@ -252,7 +252,7 @@ Concrete visual guardrails grounded in the incumbent implementation or the user'
 
 The frontmatter owns token primitives (colors, typography, rounded, spacing, components). The sidecar at `docs/design/design.json` carries **what Stitch's schema can't hold**: tonal ramps per color, shadow/elevation tokens, motion tokens, breakpoints, full component HTML/CSS snippets (the panel renders these into a shadow DOM), and narrative (north star, rules, do's/don'ts). It extends the frontmatter, it doesn't duplicate it.
 
-Regenerate the sidecar whenever you regenerate root `DESIGN.md`. If the user only asks to refresh the sidecar (e.g., from the live panel's stale-hint), preserve `DESIGN.md` and write only `docs/design/design.json`.
+Regenerate the sidecar whenever you regenerate root `DESIGN.md`. If the user only asks to refresh the sidecar, preserve `DESIGN.md` and write only `docs/design/design.json`.
 
 #### Schema
 
@@ -342,7 +342,7 @@ Do not reword. The panel shows these as secondary collapsible context; the same 
 ### Step 5: Confirm and refine
 
 1. Show the user the full DESIGN.md you wrote. Briefly highlight the non-obvious creative choices (descriptive color names, atmosphere language, named rules).
-2. Mention that `docs/design/design.json` was also written alongside; the live panel will now render this project's actual button/input/nav primitives instead of generic approximations.
+2. Mention that `docs/design/design.json` was also written alongside; it records this project's actual button/input/nav primitives instead of leaving downstream tools to guess at generic approximations.
 3. Offer to refine any section: "Want me to revise a section, add component patterns I missed, or adjust the atmosphere language?"
 
 Your own write is the freshest source; subsequent commands in this session don't need a reload.

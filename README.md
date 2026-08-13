@@ -14,10 +14,21 @@ skills/
 ├── content-and-copy/           # contenuti ricorrenti, tono di voce, formati
 ├── review-playbooks/           # audit e review (accessibilità, SEO, landing, ecc.)
 ├── workflows-and-processes/    # processi interni, onboarding, handoff, routine di team
-└── code-quality/               # audit del codice, debito tecnico, pulizia dipendenze
-    └── lovable-codebase-audit-cleanup/
-        └── SKILL.md
+├── code-quality/               # audit del codice, debito tecnico, pulizia dipendenze
+│   └── lovable-codebase-audit-cleanup/
+│       └── SKILL.md
+└── design-and-ux/              # direzione artistica, sistemi visivi, UI/UX
+    └── art-direction/
+        ├── SKILL.md
+        └── reference/          # 33 playbook caricati su richiesta
 ```
+
+## Skill disponibili
+
+| Skill | Categoria | Cosa fa |
+|---|---|---|
+| [lovable-codebase-audit-cleanup](skills/code-quality/lovable-codebase-audit-cleanup/) | code-quality | Audit in sola lettura del codice + pulizia a batch approvati: codice morto, dipendenze inutilizzate, duplicazioni, debito tecnico. |
+| [art-direction](skills/design-and-ux/art-direction/) | design-and-ux | 21 comandi di design: costruire una direzione visiva, criticare, rifinire, rendere più audace o più sobria un'interfaccia. Opera derivata da [Impeccable](https://github.com/pbakaus/impeccable) (Apache-2.0), adattata a Lovable. |
 
 Ogni skill vive nella propria cartella dentro una categoria:
 
