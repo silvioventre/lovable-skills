@@ -5,6 +5,10 @@ Checks each skill directory (any directory containing a SKILL.md) against the
 constraints Lovable enforces on import, so a malformed skill fails here rather
 than at Settings -> Skills -> Add.
 
+The frontmatter is parsed with a real YAML parser, not a regex. Lovable parses
+it as YAML, so anything that trips PyYAML will trip the import too — most often
+an unquoted value containing ": ", which YAML reads as a nested mapping.
+
 Run: python3 scripts/validate-skills.py
 Exit: 0 all valid, 1 one or more errors.
 """
@@ -12,6 +16,12 @@ Exit: 0 all valid, 1 one or more errors.
 import re
 import sys
 from pathlib import Path
+
+try:
+    import yaml
+except ImportError:
+    print("PyYAML is required: pip install pyyaml", file=sys.stderr)
+    sys.exit(1)
 
 # Lovable's documented limits.
 NAME_MAX = 64
@@ -24,8 +34,10 @@ SKILL_MAX_TOTAL_BYTES = 10 * 1024 * 1024
 NAME_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 
 SKILLS_DIR = Path(__file__).resolve().parent.parent / "skills"
-# The template is a scaffold to copy, not an importable skill.
-EXCLUDED = {"_template"}
+# The scaffold is not an importable skill: its directory name is not a legal
+# skill name and its frontmatter holds placeholders. Its YAML must still parse,
+# because every skill created from it inherits the syntax.
+TEMPLATE = "_template"
 
 errors: list[str] = []
 warnings: list[str] = []
@@ -39,46 +51,70 @@ def warn(skill: str, msg: str) -> None:
     warnings.append(f"{skill}: {msg}")
 
 
-def parse_frontmatter(text: str):
-    """Return (dict, error) for the leading YAML frontmatter block."""
+def split_frontmatter(text: str):
+    """Return (frontmatter_text, error)."""
     if not text.startswith("---\n"):
         return None, "SKILL.md must open with a YAML frontmatter block (`---`)"
     end = text.find("\n---", 3)
     if end == -1:
         return None, "unterminated frontmatter block (no closing `---`)"
-    body = text[4:end]
-    data, key = {}, None
-    for line in body.split("\n"):
-        if not line.strip():
-            continue
-        m = re.match(r"^([A-Za-z_][A-Za-z0-9_-]*):\s*(.*)$", line)
-        if m:
-            key = m.group(1)
-            data[key] = m.group(2).strip()
-        elif key and (line.startswith(" ") or line.startswith("\t")):
-            data[key] += " " + line.strip()  # folded continuation
-    return data, None
+    return text[4:end], None
 
 
-def check_skill(skill_dir: Path) -> None:
+def explain_yaml_error(exc: Exception, fm: str) -> str:
+    """Turn a YAML exception into something actionable."""
+    msg = str(exc).split("\n")[0]
+    mark = getattr(exc, "problem_mark", None)
+    if mark is None:
+        return f"invalid YAML frontmatter: {msg}"
+
+    line, col = mark.line, mark.column
+    lines = fm.split("\n")
+    excerpt = lines[line][max(0, col - 45) : col + 35] if line < len(lines) else ""
+    hint = ""
+    if "mapping values are not allowed" in msg:
+        hint = (
+            "  -> an unquoted value contains ': ' (colon + space), which YAML reads "
+            "as a nested key. Rephrase to drop the colon, or quote the whole value."
+        )
+    return (
+        f"invalid YAML frontmatter at line {line + 1}, column {col + 1}: {msg}\n"
+        f"      ...{excerpt}...\n{hint}".rstrip()
+    )
+
+
+def check_skill(skill_dir: Path, is_template: bool) -> None:
     name = skill_dir.name
     rel = skill_dir.relative_to(SKILLS_DIR.parent)
     before = len(errors)
 
-    skill_md = skill_dir / "SKILL.md"
-    text = skill_md.read_text(encoding="utf-8")
+    text = (skill_dir / "SKILL.md").read_text(encoding="utf-8")
 
     # --- frontmatter -------------------------------------------------------
-    fm, parse_error = parse_frontmatter(text)
-    if parse_error:
-        err(str(rel), parse_error)
+    fm, split_error = split_frontmatter(text)
+    if split_error:
+        err(str(rel), split_error)
         print(f"  FAIL  {rel}")
         return
 
-    declared = fm.get("name")
+    try:
+        data = yaml.safe_load(fm)
+    except yaml.YAMLError as exc:
+        err(str(rel), explain_yaml_error(exc, fm))
+        print(f"  FAIL  {rel}")
+        return
+
+    if not isinstance(data, dict):
+        err(str(rel), "frontmatter must be a YAML mapping of keys to values")
+        print(f"  FAIL  {rel}")
+        return
+
+    declared = data.get("name")
     if not declared:
         err(str(rel), "frontmatter is missing `name`")
-    else:
+    elif not isinstance(declared, str):
+        err(str(rel), f"`name` must be a string, got {type(declared).__name__}")
+    elif not is_template:
         if declared != name:
             err(str(rel), f"frontmatter name `{declared}` != directory name `{name}`")
         if len(declared) > NAME_MAX:
@@ -90,10 +126,12 @@ def check_skill(skill_dir: Path) -> None:
                 "hyphens, with no leading, trailing or consecutive hyphens",
             )
 
-    description = fm.get("description")
+    description = data.get("description")
     if not description:
         err(str(rel), "frontmatter is missing `description`")
-    elif len(description) < 40:
+    elif not isinstance(description, str):
+        err(str(rel), f"`description` must be a string, got {type(description).__name__}")
+    elif len(description) < 40 and not is_template:
         warn(str(rel), "description is very short; it is the main trigger signal")
 
     # --- size limits -------------------------------------------------------
@@ -120,8 +158,9 @@ def check_skill(skill_dir: Path) -> None:
             if not (md.parent / target).resolve().exists():
                 err(str(rel), f"{md.relative_to(skill_dir)} links to missing `{target}`")
 
+    label = "template" if is_template else f"{len(files)} files, {total / 1024:.0f} KB"
     status = "ok  " if len(errors) == before else "FAIL"
-    print(f"  {status}  {rel}  ({n_chars:,} chars, {len(files)} files, {total / 1024:.0f} KB)")
+    print(f"  {status}  {rel}  ({n_chars:,} chars, {label})")
 
 
 def main() -> int:
@@ -129,19 +168,14 @@ def main() -> int:
         print(f"No skills/ directory at {SKILLS_DIR}", file=sys.stderr)
         return 1
 
-    skills = sorted(
-        p.parent
-        for p in SKILLS_DIR.rglob("SKILL.md")
-        if not any(part in EXCLUDED for part in p.parts)
-    )
-
+    skills = sorted(p.parent for p in SKILLS_DIR.rglob("SKILL.md"))
     if not skills:
         print("No skills found.", file=sys.stderr)
         return 1
 
     print(f"Validating {len(skills)} skill(s)\n")
     for skill in skills:
-        check_skill(skill)
+        check_skill(skill, is_template=TEMPLATE in skill.parts)
 
     if warnings:
         print("\nWarnings:")

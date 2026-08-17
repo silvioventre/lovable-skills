@@ -77,7 +77,26 @@ Controlla ogni cartella che contiene un `SKILL.md` contro i vincoli reali di Lov
 - ogni file bundled entro 1 MB, e per skill max 200 file / 10 MB totali
 - tutti i link `.md` interni risolvono
 
+Il frontmatter viene parsato con un parser YAML vero, non con una regex: Lovable lo legge come YAML, quindi tutto ciò che rompe il parser rompe anche l'import.
+
 Gira automaticamente su ogni push e pull request via [GitHub Actions](.github/workflows/validate-skills.yml).
+
+### La trappola dei due punti
+
+In YAML un valore non quotato **non può contenere `: `** (due punti seguiti da spazio): il parser lo legge come una chiave annidata e l'import fallisce con `mapping values are not allowed in this context`. È l'errore più facile da introdurre scrivendo una `description`.
+
+```yaml
+# rotto
+description: Use when auditing a page: metadata, headings, internal links.
+
+# ok — riformulato senza due punti
+description: Use when auditing a page for metadata, headings and internal links.
+
+# ok — valore quotato
+description: "Use when auditing a page: metadata, headings, internal links."
+```
+
+Stesso discorso per ` #` (avvia un commento) e per un valore che inizia con `&`, `*`, `!`, `%` o `` ` ``. Nel dubbio, quota tutto il valore.
 
 ## Linee guida rapide
 

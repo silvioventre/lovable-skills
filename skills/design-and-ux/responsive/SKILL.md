@@ -1,6 +1,6 @@
 ---
 name: responsive
-description: Use when the user wants an app, site, page, or component to work correctly on every screen size — "make it responsive", "fix it on mobile", "it breaks on my phone", "it doesn't look right on tablet", "there's horizontal scrolling", "the layout overflows", "make it work on small screens", "test it at different breakpoints", "adapt it to any device". Covers auditing every width from 320px up, diagnosing overflow and reflow failures, applying fluid type and container queries, meeting touch-target and zoom accessibility requirements, and verifying the result against a pass gate. This is execution and verification, not visual redesign: use it to make a layout actually work at every size, not to decide what the experience should be.
+description: Use when the user wants an app, site, page, or component to work correctly on every screen size — "make it responsive", "fix it on mobile", "it breaks on my phone", "it doesn't look right on tablet", "there's horizontal scrolling", "the layout overflows", "make it work on small screens", "test it at different breakpoints", "adapt it to any device". Covers auditing every width from 320px up, diagnosing overflow and reflow failures, applying fluid type and container queries, meeting touch-target and zoom accessibility requirements, and verifying the result against a pass gate. This is execution and verification rather than visual redesign — use it to make a layout actually work at every size, not to decide what the experience should be.
 ---
 
 # Responsive

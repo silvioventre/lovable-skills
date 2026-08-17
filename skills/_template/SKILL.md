@@ -1,6 +1,6 @@
 ---
 name: nome-skill-kebab-case
-description: Use when <trigger concreto — quando Lovable deve caricare questa skill>. Descrivi anche i confini: cosa NON copre questa skill.
+description: Use when <trigger concreto — quando Lovable deve caricare questa skill>. Descrivi anche i confini, cioè cosa NON copre questa skill.
 ---
 
 # Titolo leggibile della skill
