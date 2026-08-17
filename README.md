@@ -18,9 +18,12 @@ skills/
 │   └── lovable-codebase-audit-cleanup/
 │       └── SKILL.md
 └── design-and-ux/              # direzione artistica, sistemi visivi, UI/UX
-    └── art-direction/
+    ├── art-direction/
+    │   ├── SKILL.md
+    │   └── reference/          # 33 playbook caricati su richiesta
+    └── responsive/
         ├── SKILL.md
-        └── reference/          # 33 playbook caricati su richiesta
+        └── reference/
 ```
 
 ## Skill disponibili
@@ -29,6 +32,7 @@ skills/
 |---|---|---|
 | [lovable-codebase-audit-cleanup](skills/code-quality/lovable-codebase-audit-cleanup/) | code-quality | Audit in sola lettura del codice + pulizia a batch approvati: codice morto, dipendenze inutilizzate, duplicazioni, debito tecnico. |
 | [art-direction](skills/design-and-ux/art-direction/) | design-and-ux | 21 comandi di design: costruire una direzione visiva, criticare, rifinire, rendere più audace o più sobria un'interfaccia. Opera derivata da [Impeccable](https://github.com/pbakaus/impeccable) (Apache-2.0), adattata a Lovable. |
+| [responsive](skills/design-and-ux/responsive/) | design-and-ux | Fa funzionare l'interfaccia a ogni larghezza da 320px in su e lo verifica contro un gate pass/fail: overflow, reflow, target tattili, zoom 400%, safe area. |
 
 Ogni skill vive nella propria cartella dentro una categoria:
 

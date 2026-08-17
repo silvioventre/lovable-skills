@@ -4,6 +4,8 @@ Adapt an existing design to a different context: another screen size, device, pl
 
 **Web only** (mobile web included). Native platforms (`ios` / `android` / `adaptive`) route to [adapt.native.md](adapt.native.md) instead; if the project is native, switch to it now.
 
+**Scope check first.** This playbook decides *what the experience should become* in a new context. If the design is already right and simply does not hold together at some widths — overflow, unreadable text, targets too small, broken reflow — that is execution, not adaptation, and the `responsive` skill owns it. Route there rather than reopening design decisions the user did not ask about.
+
 ---
 
 ## Assess Adaptation Challenge
