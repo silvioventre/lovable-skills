@@ -1,5 +1,7 @@
 # lovable-skills
 
+A central library of reusable Lovable.dev skills.
+
 Libreria centrale di **skill riutilizzabili per Lovable** ([docs.lovable.dev](https://docs.lovable.dev)).
 
 Una skill è un playbook markdown a tema — nome, descrizione (il trigger che dice a Lovable *quando* usarla) e istruzioni — che Lovable carica su richiesta (via `/nome-skill`) o automaticamente quando una richiesta corrisponde alla descrizione. A differenza della *knowledge* (sempre in contesto), le skill si caricano solo quando servono, quindi qui dentro possiamo tenerne quante ne vogliamo senza appesantire ogni conversazione.
@@ -10,21 +12,16 @@ Una skill è un playbook markdown a tema — nome, descrizione (il trigger che d
 skills/
 ├── _template/                  # scheletro da copiare per una nuova skill
 │   └── SKILL.md
-├── launch-and-quality/         # checklist di lancio, QA, review pre-rilascio
-├── content-and-copy/           # contenuti ricorrenti, tono di voce, formati
-├── review-playbooks/           # audit e review (accessibilità, SEO, landing, ecc.)
-├── workflows-and-processes/    # processi interni, onboarding, handoff, routine di team
-├── code-quality/               # audit del codice, debito tecnico, pulizia dipendenze
+├── code-quality/               # audit del codice, debito tecnico, dipendenze
 │   └── lovable-codebase-audit-cleanup/
-│       └── SKILL.md
 └── design-and-ux/              # direzione artistica, sistemi visivi, UI/UX
     ├── art-direction/
-    │   ├── SKILL.md
-    │   └── reference/          # 33 playbook caricati su richiesta
     └── responsive/
-        ├── SKILL.md
-        └── reference/
+
+scripts/validate-skills.py      # valida ogni skill contro i limiti di Lovable
 ```
+
+Le categorie nascono quando serve la prima skill che le abita: niente cartelle vuote in attesa. Sul tavolo per il futuro, senza impegno: checklist di lancio e QA, contenuti ricorrenti e tono di voce, playbook di review (SEO, accessibilità, landing), processi interni e workflow di team.
 
 ## Skill disponibili
 
@@ -42,7 +39,7 @@ skills/<categoria>/<nome-skill>/
     (+ eventuali file bundled: reference.md, template.md, ecc.)
 ```
 
-Le categorie sono un punto di partenza generico: quando emergono esigenze reali (es. un dominio specifico: e-commerce, SaaS, siti vetrina) si aggiungono nuove cartelle categoria senza toccare quelle esistenti.
+Le categorie sono contenitori leggeri: quando emerge un'esigenza reale (un dominio specifico, un tipo di lavoro ricorrente) si aggiunge una cartella categoria senza toccare quelle esistenti.
 
 ## Creare una nuova skill
 
@@ -63,6 +60,24 @@ https://github.com/silvioventre/lovable-skills/tree/main/skills/<categoria>/<nom
 ```
 
 Lovable scarica, valida e aggiunge la skill al workspace con nome, descrizione e file bundled intatti.
+
+## Validare una skill
+
+Prima di committare, o prima di importare in Lovable:
+
+```bash
+python3 scripts/validate-skills.py
+```
+
+Controlla ogni cartella che contiene un `SKILL.md` contro i vincoli reali di Lovable, così un errore di formato emerge qui e non al momento dell'import:
+
+- frontmatter YAML presente, con `name` e `description`
+- `name` uguale al nome della cartella, minuscolo, solo lettere/numeri e trattini singoli, max 64 caratteri
+- `SKILL.md` entro i 100.000 caratteri
+- ogni file bundled entro 1 MB, e per skill max 200 file / 10 MB totali
+- tutti i link `.md` interni risolvono
+
+Gira automaticamente su ogni push e pull request via [GitHub Actions](.github/workflows/validate-skills.yml).
 
 ## Linee guida rapide
 

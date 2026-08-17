@@ -1,0 +1,23 @@
+# OS metadata — Lovable ignores these on import, but they should never be
+# committed into a skill folder in the first place.
+.DS_Store
+._*
+__MACOSX/
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Python (scripts/)
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Build output of skill packaging, if ever added
+dist/
+*.zip
+*.skill
