@@ -14,14 +14,18 @@ skills/
 │   └── SKILL.md
 ├── code-quality/               # audit del codice, debito tecnico, dipendenze
 │   └── lovable-codebase-audit-cleanup/
-└── design-and-ux/              # direzione artistica, sistemi visivi, UI/UX
-    ├── art-direction/
-    └── responsive/
+├── design-and-ux/              # direzione artistica, sistemi visivi, UI/UX
+│   ├── art-direction/
+│   └── responsive/
+├── troubleshooting/            # errori, comportamenti sbagliati, loop di fix
+│   └── debug/
+└── security/                   # segreti, validazione, RLS, autenticazione
+    └── secure/
 
 scripts/validate-skills.py      # valida ogni skill contro i limiti di Lovable
 ```
 
-Le categorie nascono quando serve la prima skill che le abita: niente cartelle vuote in attesa. Sul tavolo per il futuro, senza impegno: checklist di lancio e QA, contenuti ricorrenti e tono di voce, playbook di review (SEO, accessibilità, landing), processi interni e workflow di team.
+Le categorie nascono quando serve la prima skill che le abita: niente cartelle vuote in attesa. Sul tavolo per il futuro, senza impegno: SEO e AI search, checklist di lancio, contenuti ricorrenti e tono di voce, processi interni e workflow di team.
 
 ## Skill disponibili
 
@@ -30,6 +34,8 @@ Le categorie nascono quando serve la prima skill che le abita: niente cartelle v
 | [lovable-codebase-audit-cleanup](skills/code-quality/lovable-codebase-audit-cleanup/) | code-quality | Audit in sola lettura del codice + pulizia a batch approvati: codice morto, dipendenze inutilizzate, duplicazioni, debito tecnico. |
 | [art-direction](skills/design-and-ux/art-direction/) | design-and-ux | 21 comandi di design: costruire una direzione visiva, criticare, rifinire, rendere più audace o più sobria un'interfaccia. Opera derivata da [Impeccable](https://github.com/pbakaus/impeccable) (Apache-2.0), adattata a Lovable. |
 | [responsive](skills/design-and-ux/responsive/) | design-and-ux | Fa funzionare l'interfaccia a ogni larghezza da 320px in su e lo verifica contro un gate pass/fail: overflow, reflow, target tattili, zoom 400%, safe area. |
+| [debug](skills/troubleshooting/debug/) | troubleshooting | Instrada il sintomo al playbook giusto — build, schermata bianca, comportamento sbagliato, backend, loop di fix — e corregge la causa radice, non il sintomo. |
+| [secure](skills/security/secure/) | security | Instrada la questione di sicurezza al layer giusto (frontend, edge function, RLS, auth) e applica la regola che vale lì. Gate di 10 controlli prima di pubblicare. |
 
 Ogni skill vive nella propria cartella dentro una categoria:
 
