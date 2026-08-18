@@ -24,7 +24,7 @@ This is the category that matters most. If you find a playbook whose advice woul
 
 ## Reporting
 
-Email **ventre.silvio@gmail.com** with a description of the issue, the file and line involved, and what an agent following the instruction would do wrong.
+Email **silvio.ventre@v3-advisory.com** with a description of the issue, the file and line involved, and what an agent following the instruction would do wrong.
 
 For issues in the first two categories above, please report privately rather than opening a public issue, so the instruction can be corrected before it is more widely seen.
 
