@@ -28,6 +28,7 @@ Read the user's description and any pasted error, then load the one playbook tha
 | Same error keeps returning, or a new one each fix | [reference/loops.md](reference/loops.md) |
 | Two or more fix attempts with no progress | [reference/loops.md](reference/loops.md) |
 | The project feels too tangled to repair | [reference/loops.md](reference/loops.md) |
+| A monitoring check reported a finding | [reference/triage.md](reference/triage.md) |
 
 If the symptom does not match a row, start at [reference/triage.md](reference/triage.md) and classify it there. If the user gave no symptom at all — "it's broken", "fix it" — do not guess: ask what they expected to happen and what happened instead, then route.
 

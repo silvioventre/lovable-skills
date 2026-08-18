@@ -13,6 +13,15 @@ Collect all six before forming a hypothesis. Anything you cannot get, name expli
 5. **When it last worked.** The change between the last good state and now is the highest-value clue in the whole process. If it never worked, say so — that is a different investigation.
 6. **What has already been tried.** Including automatic fix attempts. Repeating a failed fix is common and completely wasted.
 
+## When the symptom came from a monitoring finding
+
+A scheduled check reports findings from code review and from real visitor errors. Two things follow from that:
+
+- **Verify it is still real before fixing it.** Findings from visitor error logs can be transient, or already resolved by a later change. Reproduce it first; a fix applied to a finding that no longer occurs edits working code.
+- **False positives happen.** Working behaviour does get flagged. If investigation shows the behaviour is correct, say so and treat the finding as noise rather than bending the code to satisfy it.
+
+Otherwise a finding is an ordinary symptom: it enters the evidence list above, and routes like any other. Ask what is causing it and how it would be fixed *before* changing anything — a finding comes with a description, not a diagnosis.
+
 ## Classify the failure
 
 The class determines the playbook. Ask in this order — the first yes wins.

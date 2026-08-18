@@ -21,9 +21,12 @@ skills/
 │   └── debug/
 ├── security/                   # segreti, validazione, RLS, autenticazione
 │   └── secure/
-└── deployment/                 # pubblicazione, accessi, hosting esterno
-    ├── ship/
-    └── deploy-external/
+├── deployment/                 # pubblicazione, accessi, hosting esterno
+│   ├── ship/
+│   └── deploy-external/
+└── build/                      # pianificare prima, verificare dopo
+    ├── plan/
+    └── test/
 
 scripts/validate-skills.py      # valida ogni skill contro i limiti di Lovable
 ```
@@ -41,6 +44,8 @@ Le categorie nascono quando serve la prima skill che le abita: niente cartelle v
 | [secure](skills/security/secure/) | security | Instrada la questione di sicurezza al layer giusto (frontend, edge function, RLS, auth) e applica la regola che vale lì. Gate di 10 controlli prima di pubblicare. |
 | [ship](skills/deployment/ship/) | deployment | Preflight prima di andare live, distinzione tra accesso al progetto e accesso al sito pubblicato, verifica sul live, ripubblicazione. |
 | [deploy-external](skills/deployment/deploy-external/) | deployment | Se e cosa spostare fuori da Lovable Cloud: responsabilità che assumi, cosa migra a mano, requisiti di build, Docker. |
+| [plan](skills/build/plan/) | build | Esplora il progetto, confronta approcci, scompone una richiesta vaga in incrementi verificabili. Delega l'indagine ai subagent e non scrive codice. |
+| [test](skills/build/test/) | build | Instrada la verifica allo strumento giusto — browser testing, frontend test, chiamate dirette ed edge test — e distingue cosa vale la pena testare da cosa no. |
 
 Ogni skill vive nella propria cartella dentro una categoria:
 
