@@ -1,0 +1,38 @@
+name: Skill correction
+description: A playbook says something wrong, unclear, or that did not work in practice
+labels: ["correction"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Corrections from real use are the most valuable contributions this repository gets.
+        If you already know the fix, a pull request is welcome instead.
+  - type: input
+    id: skill
+    attributes:
+      label: Which skill
+      placeholder: e.g. payments, or debug
+    validations:
+      required: true
+  - type: input
+    id: file
+    attributes:
+      label: Which file and section
+      placeholder: e.g. reference/testing.md, "Test the lifecycle"
+  - type: textarea
+    id: what
+    attributes:
+      label: What it says, and what is wrong with it
+    validations:
+      required: true
+  - type: textarea
+    id: happened
+    attributes:
+      label: What happened when you followed it
+      description: What you asked Lovable, what it did, and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: What it should say instead

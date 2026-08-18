@@ -1,0 +1,45 @@
+name: New skill proposal
+description: Propose a skill that does not exist yet
+labels: ["new skill"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please open this before writing the skill. The boundary between skills matters
+        more here than in most projects — one that fires on the wrong request is worse
+        than no skill at all.
+  - type: input
+    id: name
+    attributes:
+      label: Proposed name
+      description: Lowercase letters, digits and single hyphens. It cannot be changed later.
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What recurring task would it handle
+      description: What do you find yourself explaining to Lovable again and again?
+    validations:
+      required: true
+  - type: textarea
+    id: triggers
+    attributes:
+      label: How would someone phrase the request
+      description: Real phrasings, including informal ones. This becomes the description.
+    validations:
+      required: true
+  - type: textarea
+    id: boundaries
+    attributes:
+      label: What it would NOT cover
+      description: And which existing skill owns that instead.
+    validations:
+      required: true
+  - type: textarea
+    id: overlap
+    attributes:
+      label: How it is scoped against existing skills
+      description: Which one is it closest to, and where exactly is the line?
+    validations:
+      required: true

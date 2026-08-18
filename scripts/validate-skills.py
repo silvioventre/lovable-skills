@@ -158,6 +158,10 @@ def check_skill(skill_dir: Path, is_template: bool) -> None:
             if not (md.parent / target).resolve().exists():
                 err(str(rel), f"{md.relative_to(skill_dir)} links to missing `{target}`")
 
+    # --- repository convention (warning, not a Lovable requirement) --------
+    if not is_template and not (skill_dir / "README.md").exists():
+        warn(str(rel), "no README.md — each skill folder is its own landing page when imported")
+
     label = "template" if is_template else f"{len(files)} files, {total / 1024:.0f} KB"
     status = "ok  " if len(errors) == before else "FAIL"
     print(f"  {status}  {rel}  ({n_chars:,} chars, {label})")
@@ -173,12 +177,13 @@ def main() -> int:
         print("No skills found.", file=sys.stderr)
         return 1
 
-    print(f"Validating {len(skills)} skill(s)\n")
+    n_real = sum(1 for s in skills if TEMPLATE not in s.parts)
+    print(f"Validating {n_real} skill(s) + {len(skills) - n_real} template(s)\n")
     for skill in skills:
         check_skill(skill, is_template=TEMPLATE in skill.parts)
 
     if warnings:
-        print("\nWarnings:")
+        print("\nWarnings (repository conventions, not import blockers):")
         for w in warnings:
             print(f"  ! {w}")
 
@@ -188,7 +193,7 @@ def main() -> int:
             print(f"  x {e}")
         return 1
 
-    print(f"\nAll {len(skills)} skill(s) valid.")
+    print(f"\nAll {len(skills)} entries valid ({n_real} skills).")
     return 0
 
 

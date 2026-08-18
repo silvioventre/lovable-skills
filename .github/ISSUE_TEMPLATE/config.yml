@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Lovable documentation
+    url: https://docs.lovable.dev
+    about: Questions about Lovable itself rather than these skills
+  - name: Security issue
+    url: https://github.com/silvioventre/lovable-skills/blob/main/SECURITY.md
+    about: A skill that instructs unsafe behaviour — please report privately

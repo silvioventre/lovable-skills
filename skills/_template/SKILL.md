@@ -1,26 +1,26 @@
 ---
-name: nome-skill-kebab-case
-description: Use when <trigger concreto — quando Lovable deve caricare questa skill>. Descrivi anche i confini, cioè cosa NON copre questa skill.
+name: skill-name-in-kebab-case
+description: Use when <concrete trigger — when Lovable should load this skill>. Describe the boundaries too, meaning what this skill does NOT cover.
 ---
 
-# Titolo leggibile della skill
+# Readable skill name
 
-Breve inquadramento: cosa fa questa skill e perché esiste.
+Brief framing: what this skill does and why it exists.
 
-## Quando si applica
+## When it applies
 
 - Trigger 1
 - Trigger 2
-- Cosa è fuori scope (rimanda eventualmente a un'altra skill)
+- What is out of scope (point to another skill where relevant)
 
-## Istruzioni
+## Instructions
 
-Passi, vincoli, esempi, edge case e formato di output atteso — scritte come spiegheresti il compito a un nuovo collega alla prima esecuzione.
+Steps, constraints, examples, edge cases and the expected output format — written the way you would explain the task to a new colleague doing it for the first time.
 
 1. Step 1
 2. Step 2
 3. Step 3
 
-## Output atteso
+## Expected output
 
-Descrivi il formato del risultato finale (report, checklist, codice, testo pronto da incollare, ecc.).
+Describe the shape of the final result: a report, a checklist, code, text ready to paste, and so on.

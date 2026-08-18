@@ -1,9 +1,9 @@
 # troubleshooting
 
-Diagnosi e risoluzione di problemi: errori, comportamenti sbagliati, regressioni, loop di fix falliti.
+Diagnosing and resolving problems: errors, wrong behaviour, regressions, and loops of failed fixes.
 
-| Skill | Cosa fa |
+| Skill | What it does |
 |---|---|
-| [debug](debug/) | Instrada il sintomo al playbook diagnostico giusto (build, comportamento, backend, loop), trova la causa radice e corregge quella invece del sintomo. |
+| [debug](debug/) | Routes the symptom to the right diagnostic playbook — build, behaviour, backend, fix loops — finds the root cause and fixes that rather than the symptom. |
 
-Aggiungi qui le skill nel formato `skills/troubleshooting/<nome-skill>/SKILL.md` (vedi `skills/_template/SKILL.md`).
+Add skills here as `skills/troubleshooting/<skill-name>/SKILL.md` — see [`skills/_template/`](../_template/).

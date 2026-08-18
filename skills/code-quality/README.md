@@ -1,5 +1,9 @@
 # code-quality
 
-Audit del codice, riduzione del debito tecnico, pulizia di codice morto/duplicato, igiene delle dipendenze — lavoro sul codice sorgente del progetto Lovable, non sul prodotto/contenuto.
+Code audits, technical debt reduction, removal of dead and duplicated code, dependency hygiene — work on the project's source, not on the product or its content.
 
-Aggiungi qui le skill nel formato `skills/code-quality/<nome-skill>/SKILL.md` (vedi `skills/_template/SKILL.md`).
+| Skill | What it does |
+|---|---|
+| [lovable-codebase-audit-cleanup](lovable-codebase-audit-cleanup/) | Two-phase rationalisation: a read-only audit that finds dead code, unused dependencies, duplication and maintainability risks, then a strictly scoped cleanup of only the batches you approve. |
+
+Add skills here as `skills/code-quality/<skill-name>/SKILL.md` — see [`skills/_template/`](../_template/).

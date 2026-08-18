@@ -1,17 +1,17 @@
 # deployment
 
-Andare live e ospitare: pubblicazione, controllo degli accessi al sito pubblicato, hosting fuori da Lovable Cloud.
+Going live and hosting: publishing, controlling access to the published site, and running outside Lovable Cloud.
 
-| Skill | Cosa fa |
+| Skill | What it does |
 |---|---|
-| [ship](ship/) | Preflight prima di pubblicare, la distinzione tra project access e website access, verifica sul sito live, ripubblicazione. |
-| [deploy-external](deploy-external/) | Se e cosa spostare fuori da Lovable Cloud, cosa diventa responsabilità tua, cosa migra da solo e cosa a mano, requisiti di build e Docker. |
+| [ship](ship/) | Pre-flight before publishing, the difference between project access and website access, verification on the live site, republishing. |
+| [deploy-external](deploy-external/) | Whether and what to move outside Lovable Cloud, what becomes your responsibility, what migrates by hand, build requirements and Docker. |
 
-## Come si dividono il lavoro
+## How they divide the work
 
-- **`ship`** = pubblicare *su* Lovable Cloud e controllarne l'accesso.
-- **`deploy-external`** = far girare frontend o backend *altrove*.
+- **`ship`** is publishing *on* Lovable Cloud and controlling who can reach it.
+- **`deploy-external`** is running the frontend or backend *somewhere else*.
 
-Entrambe rimandano a `secure` per il gate di sicurezza invece di duplicarlo.
+Both defer to `secure` for the security gate rather than duplicating it.
 
-Aggiungi qui le skill nel formato `skills/deployment/<nome-skill>/SKILL.md` (vedi `skills/_template/SKILL.md`).
+Add skills here as `skills/deployment/<skill-name>/SKILL.md` — see [`skills/_template/`](../_template/).

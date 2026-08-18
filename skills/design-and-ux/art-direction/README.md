@@ -54,4 +54,4 @@ If you work in Claude Code, Cursor, or another agent with a shell, use the origi
 
 ## License
 
-Apache License 2.0. Copyright 2025 Paul Bakaus; modifications copyright 2026 Silvio Ventre. See [LICENSE](LICENSE) and [NOTICE.md](NOTICE.md).
+Apache License 2.0 — the one skill in this repository not under MIT, because it is a derivative work. Copyright 2025 Paul Bakaus; modifications copyright 2026 Silvio Ventre. See [LICENSE](LICENSE) and [NOTICE.md](NOTICE.md).

@@ -49,4 +49,4 @@ Execution and verification — making an existing design work at every size. It 
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
+MIT — see the [repository LICENSE](../../../LICENSE).

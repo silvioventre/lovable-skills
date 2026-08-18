@@ -1,21 +1,19 @@
 # design-and-ux
 
-Skill di design e UX: direzione artistica, sistemi visivi, tipografia, layout, comportamento responsive, accessibilità — il lavoro sull'interfaccia, non sui contenuti o sul codice in generale.
+Design and UX skills: art direction, visual systems, typography, layout, responsive behaviour, accessibility — work on the interface, not on content or code in general.
 
-| Skill | Cosa fa |
+| Skill | What it does |
 |---|---|
-| [art-direction](art-direction/) | 21 comandi di design: costruire una direzione visiva, criticare, rifinire, rendere più audace o più sobria un'interfaccia. Derivata da [Impeccable](https://github.com/pbakaus/impeccable) (Apache-2.0). |
-| [responsive](responsive/) | Fa funzionare l'interfaccia a ogni larghezza da 320px in su, e lo verifica contro un gate pass/fail. Esecuzione e verifica, non redesign. |
+| [art-direction](art-direction/) | 21 design commands: build a visual direction, critique it, refine it, make an interface bolder or quieter. Derived from [Impeccable](https://github.com/pbakaus/impeccable) (Apache-2.0). |
+| [responsive](responsive/) | Makes the interface work at every width from 320px up, verified against a pass/fail gate. Execution and verification, not redesign. |
 
-## Come si dividono il lavoro
+## How they divide the work
 
-Si sfiorano su un punto solo, ed è utile tenerlo chiaro:
+They meet at exactly one point, and it is worth keeping clear:
 
-- **`art-direction` → comando `adapt`** decide *cosa deve diventare* l'esperienza in un altro contesto: se su mobile serve una navigazione diversa, meno contenuto, un ordine di priorità diverso. È una decisione di design.
-- **`responsive`** prende il design così com'è e lo fa reggere davvero a ogni larghezza: overflow, reflow, target tattili, tipografia fluida, safe area. È esecuzione e verifica, e non tocca l'identità visiva.
+- **`art-direction`'s `adapt` command** decides *what the experience should become* in another context: whether mobile needs different navigation, less content, a different order of priority. That is a design decision.
+- **`responsive`** takes the design as it stands and makes it genuinely hold at every width: overflow, reflow, touch targets, fluid type, safe areas. That is execution and verification, and it does not touch the visual identity.
 
-Se il layout è giusto ma si rompe sul telefono, serve `responsive`. Se il layout è sbagliato per il telefono, serve `adapt`.
+If the layout is right but breaks on a phone, you want `responsive`. If the layout is wrong for a phone, you want `adapt`.
 
----
-
-Aggiungi qui le skill nel formato `skills/design-and-ux/<nome-skill>/SKILL.md` (vedi `skills/_template/SKILL.md`).
+Add skills here as `skills/design-and-ux/<skill-name>/SKILL.md` — see [`skills/_template/`](../_template/).
