@@ -56,3 +56,27 @@ An honest cost, given before starting, is what lets someone decide to build half
 End with the first brick, small enough to build and check immediately, and the explicit note that the plan is a proposal rather than a decision already taken.
 
 Then stop. Planning that slides into implementation without the user agreeing to the plan has skipped the only step that made it worth doing.
+
+## Handing a brick to the build
+
+Once a brick is agreed, the request that implements it carries three things beyond the task itself.
+
+**Expected behaviour, not just the feature.** "When the user clicks Add to Cart, show a success message and update the cart count in the header" is buildable. "Add a cart" is a guess.
+
+**Context for anything non-obvious** — which existing component to use, which page to match the styling of, which pattern this should follow.
+
+**Guardrails on anything fragile.** Name the files and areas that must not change:
+
+> Add this to @src/pages/dashboard. Do not modify @src/shared/Layout.tsx or the existing authentication logic.
+
+Naming specific paths is far more effective than "don't break anything", and it is the single cheapest protection against collateral edits. The `debug` skill's recipes carry longer forms for genuinely delicate areas.
+
+## While it builds
+
+**Queue the next steps rather than waiting.** Prompts sent during a build are queued visibly and processed in order, and can be reordered, edited, paused, or removed before they run. This is how the brick sequence gets executed without babysitting each step — but only queue bricks that do not depend on the outcome of the one running.
+
+**Stop early when it goes wrong.** Stopping halts the current task and **keeps everything done up to that point** — the work is not lost, and the run is charged for what was completed. That makes stopping cheap: the moment a build is visibly heading the wrong way, stop it and add the missing context rather than letting it finish and then correcting a larger diff.
+
+If the partial work is not wanted, undo reverts to the previous state.
+
+**Watch the visible steps.** Which files are being touched is the earliest signal that a request was understood differently than intended — a brick that was supposed to touch one page opening shared components means the scope was read wider than you meant.

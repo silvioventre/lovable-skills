@@ -31,7 +31,8 @@ skills/
     ├── payments/
     ├── knowledge/
     ├── emails/
-    └── analyze/
+    ├── analyze/
+    └── mcp/
 
 scripts/validate-skills.py      # valida ogni skill contro i limiti di Lovable
 ```
@@ -56,6 +57,7 @@ Le categorie nascono quando serve la prima skill che le abita: niente cartelle v
 | [knowledge](skills/build/knowledge/) | build | Scrivere e mantenere le istruzioni persistenti: workspace vs progetto, come renderle verificabili, e quando un'istruzione va invece in una skill. |
 | [emails](skills/build/emails/) | build | Dominio di invio verificato, template auth e app, e la deliverability: perché un dominio nuovo finisce in spam e cosa non fare al riguardo. |
 | [analyze](skills/build/analyze/) | build | Analizza dati e genera file in un ambiente isolato, senza toccare il codice del progetto — e costruisce feature partendo da quello che ha trovato. |
+| [mcp](skills/build/mcp/) | build | Pubblicare l'app come server MCP: design dei tool, accesso, e il fatto che una chiamata a un tool non passa dalle schermate dell'app. |
 
 Ogni skill vive nella propria cartella dentro una categoria:
 

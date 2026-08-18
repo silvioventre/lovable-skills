@@ -11,6 +11,7 @@ Attività di costruzione: capire prima di scrivere, verificare dopo, e le capabi
 | [knowledge](knowledge/) | Scrivere e mantenere le istruzioni persistenti: cosa va nel workspace, cosa nel progetto, e quando serve invece una skill. |
 | [emails](emails/) | Dominio di invio, template auth e app, e le pratiche di deliverability che decidono se le mail arrivano in inbox. |
 | [analyze](analyze/) | Analizza dati e genera file (PDF, CSV, grafici, diagrammi) senza toccare il codice, e costruisce partendo da quello che trova. |
+| [mcp](mcp/) | Pubblicare l'app come server MCP per ChatGPT e Claude: quali tool esporre, il modello di accesso, e il test prima di condividere il link. |
 
 ## Ordine naturale
 
