@@ -31,6 +31,28 @@ Most real requests need two of these in sequence: investigate what exists, then 
 
 State this explicitly when you begin, and end with a plan the user approves rather than an implementation they inherit.
 
+## Use Plan mode
+
+Plan mode is the mode this skill belongs in. It reasons across steps and inspects files, logs, and project context, and it **never modifies code** — which is the guarantee that makes the rule above enforceable rather than aspirational.
+
+When there is a clear implementation to propose, it produces a structured plan in its own view: the approach, the decisions and assumptions, the components and data models, and the implementation sequence.
+
+Two things about that plan are worth using deliberately:
+
+- **It is editable markdown before approval.** Add a constraint, delete a step, rewrite a section. A plan that is nearly right should be corrected rather than regenerated — editing keeps the parts that were already agreed.
+- **Approving it starts implementation against it.** Build mode follows the approved plan, so anything vague in the plan is a decision handed to the implementation. Resolve it while it is still a sentence.
+
+The latest approved plan is saved to `.lovable/plan.md` and can be read like any other project file. Earlier plans stay in chat history, so approaches can be compared and a change re-planned safely as requirements move.
+
+## Pull in what already exists
+
+Before designing something from scratch, check whether it has been solved already.
+
+- **Reference specific files** with `@` to make the conversation precise instead of approximate. `@src/components/UserProfile.tsx` beats describing the file.
+- **Reference another project in the same workspace** the same way. Code, files, assets, and chat history from a sibling project can be read and adapted — access is read-only and respects workspace permissions.
+
+For anything the team has built before — an auth flow, a table pattern, a checkout — adapting a working implementation beats designing a new one. Check before planning; it frequently collapses the whole task.
+
 ## Delegate the investigation
 
 For anything with several independent questions, delegate them to subagents rather than working through them serially in the main thread.

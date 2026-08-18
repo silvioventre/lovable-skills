@@ -24,9 +24,12 @@ skills/
 ├── deployment/                 # pubblicazione, accessi, hosting esterno
 │   ├── ship/
 │   └── deploy-external/
-└── build/                      # pianificare prima, verificare dopo
+└── build/                      # pianificare, verificare, capability
     ├── plan/
-    └── test/
+    ├── test/
+    ├── auth/
+    ├── payments/
+    └── knowledge/
 
 scripts/validate-skills.py      # valida ogni skill contro i limiti di Lovable
 ```
@@ -46,6 +49,9 @@ Le categorie nascono quando serve la prima skill che le abita: niente cartelle v
 | [deploy-external](skills/deployment/deploy-external/) | deployment | Se e cosa spostare fuori da Lovable Cloud: responsabilità che assumi, cosa migra a mano, requisiti di build, Docker. |
 | [plan](skills/build/plan/) | build | Esplora il progetto, confronta approcci, scompone una richiesta vaga in incrementi verificabili. Delega l'indagine ai subagent e non scrive codice. |
 | [test](skills/build/test/) | build | Instrada la verifica allo strumento giusto — browser testing, frontend test, chiamate dirette ed edge test — e distingue cosa vale la pena testare da cosa no. |
+| [auth](skills/build/auth/) | build | Decide se serve davvero un login, quale metodo per quale pubblico, e lo configura. Disambigua identity reuse, workspace SSO e SAML per app Cloud. |
+| [payments](skills/build/payments/) | build | Ambienti test e live, ciclo di vita dell'abbonamento, checklist di go-live, e le tre operazioni irreversibili da confermare prima di eseguirle. |
+| [knowledge](skills/build/knowledge/) | build | Scrivere e mantenere le istruzioni persistenti: workspace vs progetto, come renderle verificabili, e quando un'istruzione va invece in una skill. |
 
 Ogni skill vive nella propria cartella dentro una categoria:
 
