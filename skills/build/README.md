@@ -9,6 +9,8 @@ Attività di costruzione: capire prima di scrivere, verificare dopo, e le capabi
 | [auth](auth/) | Decide se l'app ha davvero bisogno di un login, quale metodo, e lo configura. Distingue tre feature di identità che si somigliano. |
 | [payments](payments/) | Ambienti test e live, ciclo di vita dell'abbonamento, go-live, e le operazioni irreversibili. |
 | [knowledge](knowledge/) | Scrivere e mantenere le istruzioni persistenti: cosa va nel workspace, cosa nel progetto, e quando serve invece una skill. |
+| [emails](emails/) | Dominio di invio, template auth e app, e le pratiche di deliverability che decidono se le mail arrivano in inbox. |
+| [analyze](analyze/) | Analizza dati e genera file (PDF, CSV, grafici, diagrammi) senza toccare il codice, e costruisce partendo da quello che trova. |
 
 ## Ordine naturale
 

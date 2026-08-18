@@ -38,7 +38,7 @@ For apps whose users belong to a company that runs its own identity provider. Th
 
 **Do not build it speculatively.** It is per-project configuration work with a real cost, and it is the wrong thing to have built if the first enterprise customer never arrives. Add it when one asks.
 
-Note it is distinct from the workspace SSO your own team might use to sign in to Lovable — see the table in the main skill.
+Note it is distinct from the workspace SSO your own team might use to sign in to Lovable — see the table in the main skill. Setup and the checks that matter are in [saml.md](saml.md).
 
 ## Decide these at the same time
 

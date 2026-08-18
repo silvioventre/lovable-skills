@@ -44,6 +44,7 @@ None requires another. Identity reuse works whether the team signs in to Lovable
 | Setting up Google sign-in | [reference/google.md](reference/google.md) |
 | Managed credentials versus your own | [reference/google.md](reference/google.md) |
 | Email and password, sessions, password reset | [reference/email.md](reference/email.md) |
+| Enterprise SSO for your app's customers | [reference/saml.md](reference/saml.md) |
 
 ## The rules
 

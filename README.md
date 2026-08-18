@@ -29,7 +29,9 @@ skills/
     ├── test/
     ├── auth/
     ├── payments/
-    └── knowledge/
+    ├── knowledge/
+    ├── emails/
+    └── analyze/
 
 scripts/validate-skills.py      # valida ogni skill contro i limiti di Lovable
 ```
@@ -52,6 +54,8 @@ Le categorie nascono quando serve la prima skill che le abita: niente cartelle v
 | [auth](skills/build/auth/) | build | Decide se serve davvero un login, quale metodo per quale pubblico, e lo configura. Disambigua identity reuse, workspace SSO e SAML per app Cloud. |
 | [payments](skills/build/payments/) | build | Ambienti test e live, ciclo di vita dell'abbonamento, checklist di go-live, e le tre operazioni irreversibili da confermare prima di eseguirle. |
 | [knowledge](skills/build/knowledge/) | build | Scrivere e mantenere le istruzioni persistenti: workspace vs progetto, come renderle verificabili, e quando un'istruzione va invece in una skill. |
+| [emails](skills/build/emails/) | build | Dominio di invio verificato, template auth e app, e la deliverability: perché un dominio nuovo finisce in spam e cosa non fare al riguardo. |
+| [analyze](skills/build/analyze/) | build | Analizza dati e genera file in un ambiente isolato, senza toccare il codice del progetto — e costruisce feature partendo da quello che ha trovato. |
 
 Ogni skill vive nella propria cartella dentro una categoria:
 

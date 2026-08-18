@@ -51,7 +51,13 @@ Before designing something from scratch, check whether it has been solved alread
 - **Reference specific files** with `@` to make the conversation precise instead of approximate. `@src/components/UserProfile.tsx` beats describing the file.
 - **Reference another project in the same workspace** the same way. Code, files, assets, and chat history from a sibling project can be read and adapted — access is read-only and respects workspace permissions.
 
+You can read a sibling project's file structure, source, patterns, assets, and its chat history — which is often the most valuable part, because it carries why something was built that way. Several projects can be referenced in one request:
+
+> Build this onboarding flow using the auth setup from @MainApp and the form validation pattern from @ContactApp.
+
 For anything the team has built before — an auth flow, a table pattern, a checkout — adapting a working implementation beats designing a new one. Check before planning; it frequently collapses the whole task.
+
+**When a reference fails**, it is one of four things, and none of them is a bug: cross-project sharing is disabled at the workspace or the project level, the two projects are in different workspaces (which is never supported), the target is a Restricted project (referenceable only by its owner), or you lack access to it. Check those before working around it — and note that large files and results may be truncated, so a partial answer is not necessarily a complete picture.
 
 ## Delegate the investigation
 
