@@ -19,13 +19,16 @@ skills/
 │   └── responsive/
 ├── troubleshooting/            # errori, comportamenti sbagliati, loop di fix
 │   └── debug/
-└── security/                   # segreti, validazione, RLS, autenticazione
-    └── secure/
+├── security/                   # segreti, validazione, RLS, autenticazione
+│   └── secure/
+└── deployment/                 # pubblicazione, accessi, hosting esterno
+    ├── ship/
+    └── deploy-external/
 
 scripts/validate-skills.py      # valida ogni skill contro i limiti di Lovable
 ```
 
-Le categorie nascono quando serve la prima skill che le abita: niente cartelle vuote in attesa. Sul tavolo per il futuro, senza impegno: SEO e AI search, checklist di lancio, contenuti ricorrenti e tono di voce, processi interni e workflow di team.
+Le categorie nascono quando serve la prima skill che le abita: niente cartelle vuote in attesa. Sul tavolo per il futuro, senza impegno: SEO e AI search, contenuti ricorrenti e tono di voce, processi interni e workflow di team.
 
 ## Skill disponibili
 
@@ -36,6 +39,8 @@ Le categorie nascono quando serve la prima skill che le abita: niente cartelle v
 | [responsive](skills/design-and-ux/responsive/) | design-and-ux | Fa funzionare l'interfaccia a ogni larghezza da 320px in su e lo verifica contro un gate pass/fail: overflow, reflow, target tattili, zoom 400%, safe area. |
 | [debug](skills/troubleshooting/debug/) | troubleshooting | Instrada il sintomo al playbook giusto — build, schermata bianca, comportamento sbagliato, backend, loop di fix — e corregge la causa radice, non il sintomo. |
 | [secure](skills/security/secure/) | security | Instrada la questione di sicurezza al layer giusto (frontend, edge function, RLS, auth) e applica la regola che vale lì. Gate di 10 controlli prima di pubblicare. |
+| [ship](skills/deployment/ship/) | deployment | Preflight prima di andare live, distinzione tra accesso al progetto e accesso al sito pubblicato, verifica sul live, ripubblicazione. |
+| [deploy-external](skills/deployment/deploy-external/) | deployment | Se e cosa spostare fuori da Lovable Cloud: responsabilità che assumi, cosa migra a mano, requisiti di build, Docker. |
 
 Ogni skill vive nella propria cartella dentro una categoria:
 
